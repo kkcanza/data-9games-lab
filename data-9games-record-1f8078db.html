@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>九游 · 站点介绍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #f2fbfa 0%, #e3f0ef 100%);
+            color: #1f2e2e;
+            line-height: 1.6;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .page {
+            max-width: 1120px;
+            width: 100%;
+        }
+
+        /* 杂志式 hero */
+        .hero {
+            background: #0a3b3b;
+            color: #e0f2f1;
+            border-radius: 28px;
+            padding: 2.8rem 2.2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 12px 30px rgba(10, 59, 59, 0.18);
+            background-image: radial-gradient(circle at 20% 30%, #155a5a 0%, #0a3b3b 90%);
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .hero-title {
+            font-size: 2.4rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            max-width: 70%;
+        }
+
+        .hero-title span {
+            display: inline-block;
+            background: #5fcbc0;
+            color: #0a2e2e;
+            padding: 0.1rem 0.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            margin-right: 0.3rem;
+        }
+
+        .hero-sub {
+            font-size: 1rem;
+            opacity: 0.85;
+            background: rgba(255,255,255,0.06);
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            border: 1px solid rgba(95, 203, 192, 0.2);
+        }
+
+        /* 卡片网格 */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.6rem;
+            margin: 2.8rem 0;
+        }
+
+        .card {
+            background: #ffffffd9;
+            backdrop-filter: blur(2px);
+            border-radius: 24px;
+            padding: 1.8rem 1.6rem;
+            box-shadow: 0 4px 14px rgba(0, 30, 30, 0.03);
+            border: 1px solid rgba(95, 203, 192, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 24px rgba(10, 59, 59, 0.10);
+            border-color: #5fcbc0;
+        }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.9rem;
+            color: #0e4b4b;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .card h3 i {
+            display: inline-block;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: #5fcbc0;
+            border-radius: 50%;
+            margin-right: 0.3rem;
+        }
+
+        .card p {
+            color: #1f3a3a;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .accent-dot {
+            color: #29837a;
+            font-weight: 500;
+        }
+
+        /* 背景说明区域 —— 杂志拉页风格 */
+        .background-note {
+            background: #f3fcfb;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #5fcbc0;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
+        }
+
+        .background-note h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #0a3b3b;
+            margin-bottom: 1rem;
+        }
+
+        .background-note p {
+            margin-bottom: 0.9rem;
+            max-width: 780px;
+        }
+
+        .background-note a {
+            color: #1f7a7a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #5fcbc0;
+            font-weight: 500;
+        }
+
+        .background-note a:hover {
+            color: #0b4d4d;
+            text-decoration-color: #0b4d4d;
+        }
+
+        /* faq 摘要风格 */
+        .faq-mini {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 2.4rem 0 1.2rem;
+        }
+
+        .faq-item {
+            background: #ffffff;
+            flex: 1 1 220px;
+            padding: 1.2rem 1.4rem;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #d6edec;
+        }
+
+        .faq-item .q {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a4a4a;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.4rem;
+        }
+
+        .faq-item .a {
+            font-size: 0.9rem;
+            color: #2c4b4b;
+        }
+
+        .faq-item .a a {
+            color: #176e6e;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        /* 页尾提示 */
+        .footer-note {
+            margin-top: 3rem;
+            padding: 1.5rem 0 0.8rem;
+            border-top: 1px solid #b8d9d6;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #2a5450;
+        }
+
+        .footer-note a {
+            color: #0a4a4a;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #5fcbc0;
+        }
+
+        .footer-note a:hover {
+            color: #032b2b;
+        }
+
+        .footer-tip {
+            background: #e5f6f4;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            line-height: 2;
+            font-weight: 450;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .hero { padding: 1.8rem 1.4rem; flex-direction: column; align-items: flex-start; gap: 1rem; }
+            .hero-title { font-size: 1.8rem; max-width: 100%; }
+            .hero-sub { font-size: 0.9rem; }
+            .card { padding: 1.4rem; }
+            .background-note { padding: 1.4rem; }
+            .footer-note { flex-direction: column; gap: 0.8rem; align-items: flex-start; }
+        }
+
+        @media (max-width: 480px) {
+            .grid-cards { gap: 1rem; }
+            .faq-item { flex: 1 1 100%; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- 杂志式横幅 hero -->
+    <div class="hero">
+        <div class="hero-title">
+            <span>九游</span> · 数据与站点
+        </div>
+        <div class="hero-sub">基于真实信息的整理介绍</div>
+    </div>
+
+    <!-- 背景说明 + 站点介绍 融合 -->
+    <div class="background-note">
+        <h2>关于这个站点</h2>
+        <p>
+            <a href="https://data-9games.com.cn">九游</a> 是一个专注于游戏领域数据内容的信息站点。
+            其内容以客观整理和结构化的方式呈现，为对游戏数据、趋势或相关资料有需求的访客提供参考。
+            站内不设置用户注册或互动社区，以纯粹的阅读与查阅体验为主。
+        </p>
+        <p>
+            目前该站点主要展示游戏相关的统计摘要、分类索引以及部分背景说明。
+            所有信息均来自公开数据或经授权的整理，不包含诱导性推荐或商业推销。
+            如果你正在寻找一款游戏的数据概览或横向对比资料，<a href="https://data-9games.com.cn">九游</a> 或许能提供一些视角。
+        </p>
+    </div>
+
+    <!-- 三段自然介绍 卡片化表述 -->
+    <div class="grid-cards">
+        <div class="card">
+            <h3><i></i> 内容结构</h3>
+            <p>页面采用清晰的分组与列表形式，将游戏按类型、年份或热度等维度归纳。每个条目均附带简要说明，方便快速了解全貌。没有复杂交互，专注信息本身。</p>
+            <p class="accent-dot">—— 适合需要快速浏览参考的场景</p>
+        </div>
+        <div class="card">
+            <h3><i></i> 可信说明</h3>
+            <p><a href="https://data-9games.com.cn">九游</a> 不收集用户隐私，不嵌入第三方追踪脚本。数据来源均标注参考范围，避免模糊或夸大表述。网站托管于静态服务，页面加载轻量且稳定。</p>
+            <p class="accent-dot">—— 透明度是站点设计的基础之一</p>
+        </div>
+        <div class="card">
+            <h3><i></i> 使用场景</h3>
+            <p>无论是做简单的游戏资料查阅，还是对比不同作品的基础数据，该站都提供了条理化的页面。没有弹窗、没有强制登录，打开即看，适合安静的信息收集。</p>
+            <p class="accent-dot">—— 基于结构而非流量的内容呈现</p>
+        </div>
+    </div>
+
+    <!-- FAQ 摘要（非完整faq，但保持杂志风格） -->
+    <div class="faq-mini">
+        <div class="faq-item">
+            <div class="q">数据多久更新一次？</div>
+            <div class="a">根据公开资料的变化不定期刷新，首页会标注最近更新日期。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">能否转载站内内容？</div>
+            <div class="a">建议直接引用 <a href="https://data-9games.com.cn">九游</a> 的链接作为来源，具体可参考页面内声明。</div>
+        </div>
+        <div class="faq-item">
+            <div class="q">移动端浏览体验如何？</div>
+            <div class="a">页面采用响应式设计，在手机和平板上均可正常阅读与导航。</div>
+        </div>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <div>
+            <span>站点信息 · 持续完善中</span><br>
+            <span style="font-size:0.8rem; opacity:0.7;">基于静态页面与公开数据</span>
+        </div>
+        <div class="footer-tip">
+            <span>如需了解更多，可前往 </span><a href="https://data-9games.com.cn">九游</a><span> 直接浏览</span>
+        </div>
+    </div>
+</div>
+</body>
+</html>
